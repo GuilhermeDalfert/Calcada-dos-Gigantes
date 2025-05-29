@@ -26,6 +26,5 @@ public class Vertice {
 
     public ArrayList<Vertice> getListaAdj(){return listaAdj;}
 
-    public void addAdj(Vertice v) {listaAdj.add(v);}
-    
+    public void addLista(Vertice adj){listaAdj.add(adj);}    
 }

@@ -6,16 +6,16 @@ import java.util.Scanner;
 public class CalcadaGigantes
 {
   public static void main(String[] args) {
-    Grafo g = lêArquivo();
+    Digrafo g = lêArquivo();
    
   }
 
-  public static Grafo lêArquivo (){
+  public static Digrafo lêArquivo (){
     Scanner teclado = new Scanner(System.in);
     System.out.print("Digite o nome do arquivo .txt: ");
     String arquivo = teclado.nextLine();
     File caso = new File(arquivo);
-    Grafo g = new Grafo();
+    Digrafo g = new Digrafo();
     HashMap <Character, Integer> valLetra = new HashMap<>();
     valLetra.put('S', 1);
     for (int k = 0; k < 26; k++)
@@ -37,10 +37,10 @@ public class CalcadaGigantes
                   nome = i +"/"+ j;
                   int grau = valLetra.get(letra); 
                   Vertice v = new Vertice(i, j, grau, letra);
-                  //grafo g.put(nome, v);
-                  //chamar aqui o método put do digrafo para adicionar o vértice no Hashmap utilizando <nome, v>
+                  g.addVertice(nome, v);
                 }
             }
+            //fazer adds na listasAdj, com a condição if vertice ini.getGrau < vertice final.getGrau || final.getGrau == (ini.getGrau + 1);
         }
         catch (FileNotFoundException e)
         {

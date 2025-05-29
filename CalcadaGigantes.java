@@ -20,7 +20,7 @@ public class CalcadaGigantes
     valLetra.put('S', 1);
     for (int k = 0; k < 26; k++)
     {
-      valLetra.put((char)('a'+ k),k+1);
+      valLetra.put((char)('a'+ k),k+1); //pesquisei no chatGPT como fazer o calculo das letras char aumentando no alfabeto
     }
     try (Scanner scan = new Scanner(caso);)
         {
@@ -35,12 +35,7 @@ public class CalcadaGigantes
                 {
                   char letra = linha.charAt(j);
                   nome = i +"/"+ j;
-                  Integer G = valLetra.get(letra); //precisei usar Integer aq e dps passar pra int pq int não pode ser null
-                  if (G == null) 
-                  {
-                   throw new IllegalArgumentException("Erro nas letras do arquivo!");
-                  }
-                  int grau = G;
+                  int grau = valLetra.get(letra); 
                   Vertice v = new Vertice(i, j, grau, letra);
                   //grafo g.put(nome, v);
                   //chamar aqui o método put do digrafo para adicionar o vértice no Hashmap utilizando <nome, v>

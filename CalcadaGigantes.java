@@ -1,13 +1,24 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class CalcadaGigantes
 {
   public static void main(String[] args) {
     Digrafo g = montaGrafo();
-   
+    int passos = encontraCaminho(g, "0/0");
+    if(passos <= 0)
+    {
+      System.out.println("Erro no cálculo do número de passos!");
+    }
+    else
+    {
+      System.out.println("Número mínimo de passos necessários até chegar em uma pedra z: "+passos+ " passos!");
+    }
   }
 
   public static Digrafo montaGrafo (){
@@ -77,6 +88,43 @@ public class CalcadaGigantes
             teclado.close();
         }
     return g;
+  }
+
+  public static int encontraCaminho(Digrafo g, String vIni)
+  {
+    int maxG = 26;
+    Vertice ini = g.getVertice(vIni);
+    Map <Vertice, Boolean> visitado = new HashMap<>();
+    Map <Vertice, Integer> distancia = new HashMap<>();
+    Queue <Vertice> fila = new LinkedList<>();
+
+    fila.add(ini);
+    visitado.put(ini, true);
+    distancia.put(ini, 0);
+    int passos = -1;
+
+    do
+    {
+      Vertice atual = fila.poll();
+      if(atual.getGrau()==maxG)
+      {
+        passos = distancia.get(atual);
+        return passos;
+      }
+
+      for (Vertice i : atual.getListaAdj())
+      {
+        if (!visitado.containsKey(i))
+        {
+          fila.add(i);
+          visitado.put(i, true);
+          distancia.put(i, (distancia.get(atual)) + 1);
+        }
+      }
+    }
+    while(!fila.isEmpty());    
+    
+    return passos;
   }
 }
 

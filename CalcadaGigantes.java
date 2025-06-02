@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class CalcadaGigantes
 {
   public static void main(String[] args) {
+    long inicio = System.nanoTime();
     Digrafo g = montaGrafo();
-    int passos = encontraCaminho(g, "0/0");
+    int passos = encontraCaminho(g, "0/0"); //chama o método começando da pedra 'S'(nome: "0/0")
     if(passos <= 0)
     {
       System.out.println("Erro no cálculo do número de passos!");
@@ -19,6 +20,8 @@ public class CalcadaGigantes
     {
       System.out.println("Número mínimo de passos necessários até chegar em uma pedra z: "+passos+ " passos!");
     }
+    long fim = System.nanoTime();
+    System.out.println("Tempo de execução: "+(fim - inicio));
   }
 
   public static Digrafo montaGrafo (){

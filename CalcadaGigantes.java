@@ -34,7 +34,7 @@ public class CalcadaGigantes
     valLetra.put('S', 1);
     for (int k = 0; k < 26; k++)
     {
-      valLetra.put((char)('a'+ k), k+1); //pesquisei no chatGPT como fazer o calculo das letras char incrementando o valor do 'a' em ASCII
+      valLetra.put((char)('a'+ k), k+1); 
     }
     try (Scanner scan = new Scanner(caso);)
         {
